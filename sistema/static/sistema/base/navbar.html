@@ -1,0 +1,16 @@
+  <nav class="navbar navbar-dark bg-primary navbar-expand-md">
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="{% url 'url_home' %}">Vila Attena</a>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav ml-auto">
+        <li class="nav-item"><a href="{% url 'url_profile' %}" class="nav-link"><span class="fa fa-address-book"></span> Perfil</a></li>
+        <li class="nav-item"><a href="{% url 'url_ranking' %}" class="nav-link"><span class="fa fa-book"></span> Ranking</a></li>
+        <li class="nav-item"><a href="{% url 'url_play' %}" class="nav-link"><span class="fa fa-gamepad"></span> Jogar</a></li>
+        <li class="nav-item"><a href="{% url 'url_signup' %}" class="nav-link"><span class="fa fa-user"></span> Cadastrar</a></li>
+        <li class="nav-item"><a href="{% url 'url_signin' %}" class="nav-link"><span class="fa fa-sign-in"></span> Entrar</a></li>
+        <li class="nav-item"><a href="#" class="nav-link"><span class="fa fa-sign-out"></span> Sair</a></li>
+        </ul>
+      </div>
+    </nav>

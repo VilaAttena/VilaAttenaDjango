@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% include 'head.html' %}
+</head>
+<body>
+	{% include 'navbar.html' %}
+	<div class="container-fluid py-3">
+	    <div class="row justify-content-center">
+	        <div class="col-lg-7 col-xlg-9 col-md-8">
+	            <div class="card">                            
+	                <h3 class="card-title m-t-10 text-center">Cadastro de Usuário</h3>	                
+	                <form class="form-horizontal" method="POST">
+	                	{% csrf_token %}
+ 					<div class="form-group">                      	
+                        <div class="col-md-12">  
+                            <b>{{ form.name.label_tag }}</b>                      		
+                            {{ form.name }}
+                            {{ form.name.errors }}
+                        </div>
+                    </div>
+ 					<div class="form-group">                      	
+                        <div class="col-md-12"> 
+                            <b>{{ form.login.label_tag }}</b>                       		
+                            {{ form.login }}
+                            {{ form.login.errors }}
+                        </div>
+                    </div>
+ 					<div class="form-group">                      	
+                        <div class="col-md-12"> 
+                            <b>{{ form.email.label_tag }}</b>                       		
+                            {{ form.email }}
+                            {{ form.email.errors }}
+                        </div>
+                    </div>
+ 					<div class="form-group">                      	
+                        <div class="col-md-12">  
+                            <b>{{ form.dateBirth.label_tag }}</b>                      		
+                            {{ form.dateBirth }}
+                            {{ form.dateBirth.errors }}
+                        </div>
+                    </div>  
+ 					<div class="form-group">                      	
+                        <div class="col-md-12">     
+                            <b>{{ form.password.label_tag }}</b>                   		
+                            {{ form.password }}
+                            {{ form.confirmPassword.errors }}
+                        </div>
+                    </div>                  
+ 					<div class="form-group">                      	
+                        <div class="col-md-12">          
+                            <b>{{ form.confirmPassword.label_tag }}</b>              		
+                            {{ form.confirmPassword }}
+                            {{ form.confirmPassword.errors }}
+                        </div>
+                    </div>                                                                                                                        
+	                    <div class="form-group">
+	                        <div class="col-sm-12">
+	                            <button type="submit" class="btn btn-lg btn-primary btn-block">Cadastrar</button>
+	                        </div>
+	                    </div>                         
+	                    <a href="{% url 'url_signin' %}">Já possui uma conta?</a>                    
+	                </form>
+	            </div>
+	        </div>
+	    </div> 
+	</div>         
+</body>
+</html>
