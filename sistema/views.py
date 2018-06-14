@@ -1,13 +1,12 @@
 from django.shortcuts import render, redirect
-from .forms import NewUserForm, LoginForm, ProfileForm, ForgetPasswordForm
-
+from .forms import UserCreationForm
+from django.contrib.auth import authenticate, login
 
 def home(request):
 	return render(request, 'sistema/home.html')
 
-def profile(request):
-	form = ProfileForm(request.POST or None)
-	return render(request, 'sistema/profile.html', {'form': form})
+def profile(request):	
+	return render(request, 'sistema/profile.html')
 
 def ranking(request):
 	return render(request, 'sistema/ranking.html')
@@ -15,19 +14,21 @@ def ranking(request):
 def play(request):
 	return render(request, 'sistema/play.html')
 
-def sign_up(request):
-	form = NewUserForm(request.POST or None)
-	if form.is_valid():
-		form.save()
-		return redirect('url_home')
-	return render(request, 'sistema/sign_up.html', {'form': form})
+def register(request):
+	if request.method == 'POST':
+		form = UserCreationForm(request.POST)
 
-def sign_in(request):
-	form = LoginForm(request.POST or None)
-	
-	return render(request, 'sistema/sign_in.html', {'form': form})
+		if form.is_valid():
+			form.save()
+			username = form.cleaned_data['username']
+			password = form.cleaned_data['password1']
+			user = authenticate(username=username, password=password)
+			login(request, user)
+			return redirect('url_home')
+	else:
+		form = UserCreationForm()
+	return render(request, 'registration/register.html', {'form': form})
 
-def forgetPassword(request):
-	form = ForgetPasswordForm(request.POST or None)
-	return render(request, 'sistema/forget.html', {'form': form})
+def forgetPassword(request):	
+	return render(request, 'sistema/forget.html')
 
