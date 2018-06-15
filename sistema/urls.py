@@ -1,5 +1,6 @@
 from django.urls import path
 from .views import home, profile, ranking, play, register, forgetPassword
+from django.contrib.auth.views import logout_then_login
 
 urlpatterns = [
 	path('', home, name='url_home'),
