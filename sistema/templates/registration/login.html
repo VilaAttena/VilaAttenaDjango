@@ -8,7 +8,7 @@
   <div class="container-fluid py-3">
       <div class="row justify-content-center">
           <div class="col-lg-5 col-xlg-9 col-md-7">
-              <div class="card">                            
+              <div class="card p-3">                            
                   <h3 class="card-title m-t-10 text-center">Acesse sua conta</h3>                  
                   <form class="form-horizontal" method="POST">	
                   		{% csrf_token %}	
@@ -27,7 +27,7 @@
 	                    </div>	               	                   
 	                  <div class="form-group">
 	                   	<div class="col-sm-12">
-	                    	<button type="submit" class="btn btn-lg btn-primary btn-block">Cadastrar</button>
+	                    	<button type="submit" class="btn btn-lg btn-primary btn-block">Entrar</button>
 	                    </div>
 	                  </div>                      
                     <a href="{% url 'url_forgetPassword' %}">Esqueceu sua senha?</a>
