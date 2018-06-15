@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import UserCreationForm
+from .forms import RegistrationForm
 from django.contrib.auth import authenticate, login
 
 def home(request):
@@ -16,7 +16,7 @@ def play(request):
 
 def register(request):
 	if request.method == 'POST':
-		form = UserCreationForm(request.POST)
+		form = RegistrationForm(request.POST)
 
 		if form.is_valid():
 			form.save()
@@ -26,7 +26,7 @@ def register(request):
 			login(request, user)
 			return redirect('url_home')
 	else:
-		form = UserCreationForm()
+		form = RegistrationForm()
 	return render(request, 'registration/register.html', {'form': form})
 
 def forgetPassword(request):	
