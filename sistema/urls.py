@@ -8,4 +8,5 @@ urlpatterns = [
 	path('play/', play, name='url_play'),
 	path('accounts/register/', register, name='url_register'),
 	path('forget/', forgetPassword, name='url_forgetPassword'),
+	path('accounts/logout/', lambda request: logout_then_login(request, "/"), name='url_logout'),
 ]
