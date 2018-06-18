@@ -5,6 +5,10 @@
 </head>
 <body>
   {% include 'navbar.html' %}
+
+  {% if user.is_authenticated %}
+  <h2 class="text-center">Você já está logado em uma conta, faça logout para poder acessar essa página!</h2>
+  {% else %}
   <div class="container-fluid py-3">
       <div class="row justify-content-center">
           <div class="col-lg-5 col-xlg-9 col-md-7">
@@ -37,5 +41,7 @@
               </div>
           </div>
       </div>
-  </div>	
+  </div>
+  {% endif %}
+	
 </html>
