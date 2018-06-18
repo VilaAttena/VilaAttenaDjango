@@ -5,16 +5,28 @@ from django.contrib.auth import authenticate, login
 def home(request):
 	return render(request, 'sistema/home.html')
 
-def profile(request):	
-	return render(request, 'sistema/profile.html')
+def profile(request):
+	if request.user.is_authenticated:
+		return render(request, 'sistema/profile.html')
+	else:
+		return redirect('url_home')
 
 def ranking(request):
-	return render(request, 'sistema/ranking.html')
+	if request.user.is_authenticated:
+		return render(request, 'sistema/ranking.html')
+	else:
+		return redirect('url_home')
 
 def play(request):
-	return render(request, 'sistema/play.html')
+	if request.user.is_authenticated:
+		return render(request, 'sistema/play.html')
+	else:
+		return redirect('url_home')
 
 def register(request):
+	if request.user.is_authenticated:
+		return redirect('url_home')
+		
 	if request.method == 'POST':
 		form = RegistrationForm(request.POST)
 
