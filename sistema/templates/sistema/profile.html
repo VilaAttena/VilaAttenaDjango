@@ -22,34 +22,36 @@
                     <div class="card">                            
                         <h3 class="card-title m-t-10 text-center">Perfil do Usuário</h3>                 
                         <div class="card-block">
-                            <form class="form-horizontal">                                
-                                <div class="form-group">                            
-                                    <div class="col-md-12">
-                                        <label for='first_name'><b>Nome:</b></label>
-                                        <input type="text" class="form-control" value='{{ user.first_name }}' id='first_name'>
-                                    </div>
-                                    <br>
-                                    <div class="col-md-12">
-                                        <label for='last_name'><b>Sobrenome:</b></label>
-                                        <input type="text" class="form-control" value='{{ user.last_name }}' id='last_name'>
-                                    </div>
-                                    <br>
-                                    <div class="col-md-12">
-                                        <label for='username'><b>Nome de Usuário:</b></label>
-                                        <input type="text" class="form-control" value='{{ user.username }}' id='username'>
-                                    </div>
-                                    <br>
-                                    <div class="col-md-12">
-                                        <label for='email'><b>E-mail:</b></label>
-                                        <input type="text" class="form-control" value='{{ user.email }}' id='email'>
-                                    </div>                                                                                                           
-                                </div>                                                
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <button type="submit" class="btn btn-lg btn-primary btn-block">Atualizar Dados</button>
-                                    </div>
-                                </div>                                 
-                            </form>                            
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <h5><b>Nome:</b> {{ user.first_name }}</h5>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <h5><b>Sobrenome:</b> {{ user.last_name }}</h5>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <h5><b>Data de Nascimento:</b> {{ user.userprofile.birthdate }}</h5>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <h5><b>Nome de Usuário:</b> {{ user.username }}</h5>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <h5><b>E-mail:</b> {{ user.email }}</h5>
+                                </div>
+                            </div>                                                                                
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <a href="{% url 'url_edit_profile' %}" class="btn btn-lg btn-primary btn-block">Editar Informações</a>
+                                </div>
+                            </div>                                                                                        
                         </div>
                     </div>
                 </div>                    
