@@ -1,6 +1,8 @@
 from django import forms
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UserChangeForm
+from .models import UserProfile
+from django.forms import ModelForm
 
 
 class LoginForm(AuthenticationForm):
@@ -41,3 +43,41 @@ class RegistrationForm(UserCreationForm):
         self.fields['email'].widget.attrs['class'] = 'form-control'
         self.fields['password1'].widget.attrs['class'] = 'form-control'
         self.fields['password2'].widget.attrs['class'] = 'form-control'
+
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+class UserInfosForm(forms.ModelForm):
+
+    class Meta:
+        model = UserProfile
+        fields = (
+            'birthdate',           
+        )
+        widgets = {
+            'birthdate': DateInput()
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(forms.ModelForm, self).__init__(*args, **kwargs)
+
+        self.fields['birthdate'].widget.attrs['class'] = 'form-control'        
+        self.fields['birthdate'].label = 'Data de Nascimento'
+
+class EditProfileForm(UserChangeForm):
+
+    class Meta:
+        model = User
+        fields = (
+            'email',
+            'first_name',
+            'last_name',
+            'password',            
+        )
+
+    def __init__(self, *args, **kwargs):
+        super(UserChangeForm, self).__init__(*args, **kwargs)
+        
+        self.fields['first_name'].widget.attrs['class'] = 'form-control'
+        self.fields['last_name'].widget.attrs['class'] = 'form-control'
+        self.fields['email'].widget.attrs['class'] = 'form-control'
