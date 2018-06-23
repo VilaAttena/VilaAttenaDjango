@@ -57,7 +57,7 @@ ROOT_URLCONF = 'VilaAttena.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['sistema/static/sistema/base'],
+        'DIRS': ['sistema/static/sistema/base', 'sistema/templates/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
