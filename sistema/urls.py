@@ -1,6 +1,6 @@
-from django.urls import path
+from django.urls import path, re_path
 from .views import home, profile, edit_profile, ranking, play, register, forgetPassword
-from django.contrib.auth.views import logout_then_login, login
+from django.contrib.auth.views import logout_then_login, login, password_reset, password_reset_done, password_reset_confirm, password_reset_complete
 from .forms import LoginForm
 
 urlpatterns = [
@@ -13,4 +13,9 @@ urlpatterns = [
 	path('accounts/login/', login, {'authentication_form': LoginForm}),
 	path('forget/', forgetPassword, name='url_forgetPassword'),
 	path('accounts/logout/', lambda request: logout_then_login(request, "/"), name='url_logout'),
+	path('reset-password/', password_reset, name='reset_password'),
+	path('reset-password/done/', password_reset_done, name='reset_password_done'),
+	re_path(r'^reset-password/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/', password_reset_confirm, name='reset_password_confirm'),
+	path('reset-password/complete/', password_reset_complete, name='reset_password_complete'),
+
 ]
