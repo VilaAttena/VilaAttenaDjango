@@ -13,7 +13,8 @@
       <div class="row justify-content-center">
           <div class="col-lg-5 col-xlg-9 col-md-7">
               <div class="card p-3">                            
-                  <h3 class="card-title m-t-10 text-center"><b>Acesse sua conta</b></h3>                  
+                  <h1 class="card-title m-t-10 text-center"><b>Acesse sua conta</b></h1>
+                  <br>               
                   <form class="form-horizontal" method="POST">	
                   		{% csrf_token %}	
 	                    <div class="form-group">	                        
@@ -34,7 +35,7 @@
 	                    	<button type="submit" class="btn btn-lg btn-primary btn-block">Entrar</button>
 	                    </div>
 	                  </div>                      
-                    <a href="{% url 'reset_password' %}">Esqueceu seu nome de usuário ou senha?</a>
+                    <a href="{% url 'reset_password' %}">Esqueceu seus dados?</a>
                     <br>
                     <a href="{% url 'url_register' %}">Não é cadastrado?</a>
                   </form>
