@@ -1,35 +1,62 @@
 * {
   outline: none; }
 
+@font-face {
+    font-family: pixel;
+    src: url(../fonts/Pixellari.ttf);
+}
+
 body {
   background: #F0FFF0;
-  font-family: sans-serif;
+  font-family: pixel;
   margin: 0;
-  color: #67757c;
   font-weight: 400;
 }
 
 a:hover, a:focus {
   text-decoration: none;
+  color: #337ab7;
 }
 
-.bg-primary {
-  background-color: #7460ee !important;
+.card {
+  background-image: url(../images/wood.jpg);  
+  color: white;
+  text-shadow: 3px 2px black;
+  font-size: 25px;
+}
+
+.card a {
+  color: white;
+}
+
+.card a:hover {
+  color: #337ab7;
 }
 
 .btn-primary,
 .btn-primary.disabled {
-  background: #7460ee;
-  border: 1px solid #7460ee;
+  background-color: #00B2EE;
+  text-shadow: 3px 2px black;
+  border: none;
+  font-size: 25px;
  }
 
-.form-control {
-  color: #67757c;
-  min-height: 38px;
+.form-control {  
+  min-height: 20px;
 }
 
 .form-group {
   margin-bottom: 25px;
+}
+
+.form-group input {
+  color: white;
+  text-shadow: 2px 2px black;
+}
+
+.form-group input:focus {
+  color: black;
+  text-shadow: 1px 1px white;
 }
 
 .form-horizontal label {
@@ -49,6 +76,9 @@ a:hover, a:focus {
   background-repeat: no-repeat;
   background-size: 0 2px, 100% 1px;
   padding: 0;
+  color: white;
+  text-shadow: 2px 2px black;
+  font-size: 20px;
   -webkit-transition: background 0s ease-out 0s;
   -o-transition: background 0s ease-out 0s;
   transition: background 0s ease-out 0s;
@@ -57,7 +87,7 @@ a:hover, a:focus {
 .form-control,
 .form-control.focus,
 .form-control:focus {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#009efb), to(#009efb)), -webkit-gradient(linear, left top, left bottom, from(#d9d9d9), to(#d9d9d9));
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#00B2EE), to(#00B2EE)), -webkit-gradient(linear, left top, left bottom, from(#d9d9d9), to(#d9d9d9));
   border: 0 none;
   box-shadow: none;
 }
