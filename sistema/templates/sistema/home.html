@@ -5,10 +5,23 @@
   {% include 'head.html' %}
 </head>
 <body>
-  {% include 'navbar.html' %}
-  <div class="container text-center py-3">
-  	<h2><b>Bem vindo a Vila Attena!</b></h2> 
-    <img id="Attena" class="img-fluid mx-auto rounded" src="{% static 'sistema/images/cidade.png' %}" width="550" height="400">
+  <div class="container text-center py-5">  	
+    <p class="logo">Vila Attena</p>
+    <div class="btn-group-vertical">
+    	{% if not user.is_authenticated %}
+		    <a href="{% url 'login' %}" class="btn btn-primary">Entrar</a>
+		    <a href="{% url 'url_register' %}" class="btn btn-primary">Cadastrar</a>
+	    {% endif %}
+
+	    {% if user.is_authenticated %}
+	    	<a href="{% url 'url_play' %}" class="btn btn-primary">Jogar</a>
+	    	<a href="{% url 'url_profile' %}" class="btn btn-primary">Perfil</a>
+	    	<a href="{% url 'url_ranking' %}" class="btn btn-primary">Ranking</a>
+	    	<a href="#" class="btn btn-primary">Ajuda</a>
+	    	<a href="#" class="btn btn-primary">Sobre</a>
+	    	<a href="{% url 'url_logout' %}" class="btn btn-primary">Sair</a>
+	    {% endif %}
+    </div> 
   </div>
 </body>
 </html>

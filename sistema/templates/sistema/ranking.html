@@ -4,7 +4,6 @@
   {% include 'head.html' %}
 </head>
 <body>
-  {% include 'navbar.html' %}
   <div class="container-fluid py-3">
     <h1 class="text-center"><b>Ranking</b></h1>
     <table class="table table-striped table-dark table-hover">
@@ -58,27 +57,10 @@
           <td>G</td>
           <td>40</td>
           <td>16:00</td>
-        </tr>
-        <tr>
-          <th scope="row">8</th>
-          <td>H</td>
-          <td>30</td>
-          <td>17:00</td>
-        </tr>
-        <tr>
-          <th scope="row">9</th>
-          <td>I</td>
-          <td>20</td>
-          <td>18:00</td>
-        </tr>
-        <tr>
-          <th scope="row">10</th>
-          <td>J</td>
-          <td>10</td>
-          <td>19:00</td>
-        </tr>            
+        </tr>           
       </tbody>
     </table>
+    <a class="btn btn-primary float-left" href="{% url 'url_home' %}">Voltar</a>
   </div>
 </body>
 </html>

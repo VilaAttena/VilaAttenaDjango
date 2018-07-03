@@ -4,8 +4,6 @@
   {% include 'head.html' %}
 </head>
 <body>
-  {% include 'navbar.html' %}
-
   {% if user.is_authenticated %}
   <h2 class="text-center">Você já está logado em uma conta, faça logout para poder acessar essa página!</h2>
   {% else %}
@@ -35,9 +33,10 @@
 	                    	<button type="submit" class="btn btn-lg btn-primary btn-block">Entrar</button>
 	                    </div>
 	                  </div>                      
-                    <a href="{% url 'reset_password' %}">Esqueceu seus dados?</a>
+                    <a class="float-left" href="{% url 'reset_password' %}">Esqueceu seus dados?</a>
+                    <a class="float-right" href="{% url 'url_register' %}">Não é cadastrado?</a>
                     <br>
-                    <a href="{% url 'url_register' %}">Não é cadastrado?</a>
+                    <a href="{% url 'url_home' %}">Voltar</a>
                   </form>
               </div>
           </div>

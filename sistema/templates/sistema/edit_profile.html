@@ -3,8 +3,7 @@
 <head>
     {% include 'head.html' %}
 </head>
-<body>
-    {% include 'navbar.html' %}
+<body>    
     <div class="container-fluid py-3">
         <div class="row justify-content-center">
             <div class="col-lg-7 col-xlg-9 col-md-8">
@@ -42,10 +41,11 @@
                                 <input type="submit" class="btn btn-lg btn-primary btn-block" value="Atualizar Dados">
                             </div>
                         </div>                                                                   
-                    </form>
+                    </form>                    
                 </div>
             </div>
         </div> 
-    </div>         
+        <a class="btn btn-primary float-left" href="{% url 'url_home' %}">Voltar</a>
+    </div>
 </body>
 </html>
