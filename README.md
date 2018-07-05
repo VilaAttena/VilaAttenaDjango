@@ -17,4 +17,4 @@
 ## Terceiro passo: Rodando
 * Use o comando `cd ../../` e `cd VilaAttenaDjango` para entrar na pasta do projeto
 * Use o comando `python manage.py makemigrations` e `python manage.py migrate` para criar o banco de dados
-Use o comando `python manage.py runserver` para rodar o servidor local e entre em localhost:8000 em seu browser para abrir o sistema
+* Use o comando `python manage.py runserver` para rodar o servidor local e entre em localhost:8000 em seu browser para abrir o sistema
