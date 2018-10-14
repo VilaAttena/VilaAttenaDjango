@@ -52,7 +52,9 @@ class UserInfosForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = (
-            'birthdate',           
+            'birthdate',
+            'character_name',
+            'character_gender'           
         )
         widgets = {
             'birthdate': DateInput()
@@ -63,6 +65,10 @@ class UserInfosForm(forms.ModelForm):
 
         self.fields['birthdate'].widget.attrs['class'] = 'form-control'        
         self.fields['birthdate'].label = 'Data de Nascimento'
+        self.fields['character_name'].widget.attrs['class'] = 'form-control'        
+        self.fields['character_name'].label = 'Nome do personagem'
+        self.fields['character_gender'].widget.attrs['class'] = 'form-control'        
+        self.fields['character_gender'].label = 'Sexo do personagem'        
 
 class EditProfileForm(UserChangeForm):
 

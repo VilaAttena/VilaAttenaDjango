@@ -61,6 +61,14 @@ a:hover, a:focus {
   font-size: 25px;
  }
 
+ .btn-danger,
+.btn-danger.disabled {
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.16);
+  -webkit-font-smoothing: antialiased;
+  font-size: 25px;
+ }
+
 .form-control {  
   min-height: 20px;
 }

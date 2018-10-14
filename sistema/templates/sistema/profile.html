@@ -7,17 +7,8 @@
 <body>  
     <div id="main-wrapper">        
         <div class="container-fluid py-3">            
-            <div class="row">                    
-                <div class="col-lg-4 col-xlg-3 col-md-5">
-                    <div class="card p-2">                        
-                        <div class="card-block">                                                        
-                            <center class="m-t-30"><img src="{% static 'sistema/images/usuario.png' %}" class="img-circle" width="150" />
-                            <h3 class="card-title m-t-10"><b>{{ user.first_name }} {{user.last_name}}</b></h3>  
-                            <h4 class="card-title m-t-10"><b>{{ user.username }}</b></h4>                                                        
-                        </div>                        
-                    </div>
-                </div>                
-                <div class="col-lg-8 col-xlg-9 col-md-7">
+            <div class="row">               
+                <div class="col-8 mx-auto">
                     <div class="card p-2">                                                    
                         <h3 class="card-title m-t-10 text-center"><b>Perfil do Usuário</b></h3>                 
                         <div class="card-block">
@@ -38,6 +29,16 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-12">
+                                    <h5><b>Nome do personagem:</b> {{ user.userprofile.character_name }}</h5>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <h5><b>Sexo do personagem:</b> {{ user.userprofile.character_gender }}</h5>
+                                </div>
+                            </div>                                                        
+                            <div class="form-group">
+                                <div class="col-sm-12">
                                     <h5><b>Nome de Usuário:</b> {{ user.username }}</h5>
                                 </div>
                             </div>
@@ -47,15 +48,15 @@
                                 </div>
                             </div>                                                                                
                             <div class="form-group">
-                                <div class="col-sm-12">
+                                <div class="col-12">
                                     <a href="{% url 'url_edit_profile' %}" class="btn btn-lg btn-primary btn-block">Editar Informações</a>
                                 </div>
                             </div>    
                         </div>
                     </div>
+                    <a class="btn btn-danger float-left mt-3" href="{% url 'url_home' %}">Voltar</a>
                 </div>                    
             </div>
-            <a class="btn btn-primary float-left" href="{% url 'url_home' %}">Voltar</a>
         </div>
     </div>       
 </body>

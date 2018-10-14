@@ -48,6 +48,8 @@ def register(request):
 		if form.is_valid() and form2.is_valid():
 			user = form.save()
 			user.userprofile.birthdate = form2.cleaned_data.get('birthdate', None)
+			user.userprofile.character_name = form2.cleaned_data.get('character_name', None)
+			user.userprofile.character_gender = form2.cleaned_data.get('character_gender', None)
 			user.userprofile.save()
 			username = form.cleaned_data['username']
 			password = form.cleaned_data['password1']
