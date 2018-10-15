@@ -1,10 +1,101 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
 <head>
-  {% include 'head.html' %}
 </head>
-<body>
-	<h2 class="logo text-center">Em construção...</h2>
-	<center><a class="btn btn-danger" href="{% url 'url_home' %}">Voltar</a></center>
+	<title>Vila Attena</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="{% static 'sistema/css/gameStyle.css' %}">
+</head>
+<body>	
+	<canvas id="canvas" height="600" width="1000">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script>
+		    const imgMaleCharacter_front1 = "{% static 'sistema/gameImages/maleCharacter_front1.png' %}";
+		    const imgMaleCharacter_front2 = "{% static 'sistema/gameImages/maleCharacter_front2.png' %}";
+		    const imgMaleCharacter_front3 = "{% static 'sistema/gameImages/maleCharacter_front3.png' %}";
+			const imgMaleCharacter_back1 = "{% static 'sistema/gameImages/maleCharacter_back1.png' %}";
+			const imgMaleCharacter_back2 = "{% static 'sistema/gameImages/maleCharacter_back2.png' %}";
+			const imgMaleCharacter_back3 = "{% static 'sistema/gameImages/maleCharacter_back3.png' %}";
+			const imgMaleCharacter_left1 = "{% static 'sistema/gameImages/maleCharacter_left1.png' %}";
+			const imgMaleCharacter_left2 = "{% static 'sistema/gameImages/maleCharacter_left2.png' %}";
+			const imgMaleCharacter_left3 = "{% static 'sistema/gameImages/maleCharacter_left3.png' %}";
+			const imgMaleCharacter_right1 = "{% static 'sistema/gameImages/maleCharacter_right1.png' %}";
+			const imgMaleCharacter_right2 = "{% static 'sistema/gameImages/maleCharacter_right2.png' %}";
+			const imgMaleCharacter_right3 = "{% static 'sistema/gameImages/maleCharacter_right3.png' %}";
+
+			const imgMaleNPC_1 = "{% static 'sistema/gameImages/male_NPC1.png' %}";
+			const imgMaleNPC_2 = "{% static 'sistema/gameImages/male_NPC2.png' %}";
+			const imgMaleNPC_3 = "{% static 'sistema/gameImages/male_NPC3.png' %}";
+			const imgMaleNPC_4 = "{% static 'sistema/gameImages/male_NPC4.png' %}";
+
+			const imgFemaleNPC_1 = "{% static 'sistema/gameImages/female_NPC1.png' %}";
+			const imgFemaleNPC_2 = "{% static 'sistema/gameImages/female_NPC2.png' %}";
+
+			const imgDialogueBackground = "{% static 'sistema/gameImages/dialogue_background.png' %}";
+
+			const imgGrassSolo = "{% static 'sistema/gameImages/grass_solo.png' %}";
+			const imgStrongGrassSolo = "{% static 'sistema/gameImages/strong_grass_solo.png' %}";
+			const imgLandSolo = "{% static 'sistema/gameImages/land_solo.png' %}";
+			const imgStrongWaterSolo = "{% static 'sistema/gameImages/strong_water_solo.png' %}";
+			const imgWaterSolo = "{% static 'sistema/gameImages/water_solo.png' %}";
+			const imgWaterDiagLeft = "{% static 'sistema/gameImages/water_diag_left.png' %}";
+			const imgWaterDiagRight = "{% static 'sistema/gameImages/water_diag_right.png' %}";
+
+			const imgFlower = "{% static 'sistema/gameImages/flower.png' %}";
+			const imgFlower2 = "{% static 'sistema/gameImages/flower2.png' %}";
+			const imgFlower3 = "{% static 'sistema/gameImages/flower3.png' %}";
+			const imgWaterPlant = "{% static 'sistema/gameImages/waterPlant.png' %}";
+			const imgWaterPlant2 = "{% static 'sistema/gameImages/waterPlant2.png' %}";
+
+			const imgFenceLeft = "{% static 'sistema/gameImages/fence_left.png' %}";
+			const imgFenceSolo = "{% static 'sistema/gameImages/fence_solo.png' %}";
+			const imgFenceVertical = "{% static 'sistema/gameImages/fence_vertical.png' %}";
+
+			const imgMario = "{% static 'sistema/gameImages/Mario.png' %}";
+			const imgMarioBody = "{% static 'sistema/gameImages/marioBody.png' %}";
+			const imgSofia = "{% static 'sistema/gameImages/Sofia.png' %}";
+			const imgSofiaBody = "{% static 'sistema/gameImages/sofiaBody.png' %}";
+			const imgBruno = "{% static 'sistema/gameImages/Bruno.png' %}";
+			const imgBrunoBody = "{% static 'sistema/gameImages/brunoBody.png' %}";
+			const imgHeloisa = "{% static 'sistema/gameImages/Heloisa.png' %}";
+			const imgHeloisaBody = "{% static 'sistema/gameImages/heloisaBody.png' %}";
+			const imgJorge = "{% static 'sistema/gameImages/Jorge.png' %}";
+			const imgJorgeBody = "{% static 'sistema/gameImages/jorgeBody.png' %}";
+			const imgRonaldo = "{% static 'sistema/gameImages/Ronaldo.png' %}";
+			const imgRonaldoBody = "{% static 'sistema/gameImages/ronaldoBody.png' %}";
+
+			const imgHouseSolo = "{% static 'sistema/gameImages/house_solo.png' %}";
+			const imgWindow = "{% static 'sistema/gameImages/window.png' %}";
+			const imgDoor1 = "{% static 'sistema/gameImages/door1.png' %}";
+			const imgDoor2 = "{% static 'sistema/gameImages/door2.png' %}";
+			const imgRoofBottom = "{% static 'sistema/gameImages/roof_bottom.png' %}";
+			const imgRoofTop = "{% static 'sistema/gameImages/roof_top.png' %}";
+			const imgRoofLeft = "{% static 'sistema/gameImages/roof_left.png' %}";
+			const imgRoofRight = "{% static 'sistema/gameImages/roof_right.png' %}";
+			const imgRoofBottomLeft = "{% static 'sistema/gameImages/roof_bottom_left.png' %}";
+			const imgRoofBottomRight = "{% static 'sistema/gameImages/roof_bottom_right.png' %}";
+			const imgRoofTopLeft = "{% static 'sistema/gameImages/roof_top_left.png' %}";
+			const imgRoofTopRight = "{% static 'sistema/gameImages/roof_top_right.png' %}";
+
+			const imgBridgeTopLeft = "{% static 'sistema/gameImages/bridge_top_left.png' %}";
+			const imgBridgeTopCenter = "{% static 'sistema/gameImages/bridge_top_center.png' %}";
+			const imgBridgeTopRight = "{% static 'sistema/gameImages/bridge_top_right.png' %}";
+			const imgBridgeLeftBottom = "{% static 'sistema/gameImages/bridge_left_bottom.png' %}";
+			const imgBridgeLeftCenter = "{% static 'sistema/gameImages/bridge_left_center.png' %}";
+			const imgBridgeLeftTop = "{% static 'sistema/gameImages/bridge_left_top.png' %}";
+
+			const imgTree = "{% static 'sistema/gameImages/tree.png' %}";
+
+			const imgSheepFront = "{% static 'sistema/gameImages/sheep_front.png' %}";
+			const imgSheepLeft = "{% static 'sistema/gameImages/sheep_left.png' %}";
+			const imgSheepRight = "{% static 'sistema/gameImages/sheep_right.png' %}";
+			const imgChickFront = "{% static 'sistema/gameImages/chick_front.png' %}";
+			const imgChickLeft = "{% static 'sistema/gameImages/chick_left.png' %}";
+			const imgChickRight = "{% static 'sistema/gameImages/chick_right.png' %}";
+
+		</script>		
+		<script src="{% static 'sistema/js/script.js' %}"></script>
+	</canvas>
 </body>
 </html>
