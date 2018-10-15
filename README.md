@@ -12,7 +12,7 @@
 * Use o comando `python -m venv venv` para criar uma venv
 * (Talvez o comando `python` não seja reconhecido, caso isso aconteça use `py`)
 * Use o comando `cd venv/Scripts` e após isso use `activate` para inicializar o seu venv
-* Use o comando `pip install Django` para instalar o Django em sua venv
+* Use o comando `pip install Django==2.0.7` para instalar o Django em sua venv
 
 ## Terceiro passo: Rodando
 * Use o comando `cd ../../` e `cd VilaAttenaDjango` para entrar na pasta do projeto
