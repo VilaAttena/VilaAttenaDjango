@@ -11,6 +11,22 @@
 	<canvas id="canvas" height="600" width="1000">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script>
+			const characterName = "{{ user.userprofile.characterName }}";
+			const characterGender = "{{ user.userprofile.characterGender }}";
+
+		    const imgFemaleCharacter_front1 = "{% static 'sistema/gameImages/femaleCharacter_front1.png' %}";
+		    const imgFemaleCharacter_front2 = "{% static 'sistema/gameImages/femaleCharacter_front2.png' %}";
+		    const imgFemaleCharacter_front3 = "{% static 'sistema/gameImages/femaleCharacter_front3.png' %}";
+			const imgFemaleCharacter_back1 = "{% static 'sistema/gameImages/femaleCharacter_back1.png' %}";
+			const imgFemaleCharacter_back2 = "{% static 'sistema/gameImages/femaleCharacter_back2.png' %}";
+			const imgFemaleCharacter_back3 = "{% static 'sistema/gameImages/femaleCharacter_back3.png' %}";
+			const imgFemaleCharacter_left1 = "{% static 'sistema/gameImages/femaleCharacter_left1.png' %}";
+			const imgFemaleCharacter_left2 = "{% static 'sistema/gameImages/femaleCharacter_left2.png' %}";
+			const imgFemaleCharacter_left3 = "{% static 'sistema/gameImages/femaleCharacter_left3.png' %}";
+			const imgFemaleCharacter_right1 = "{% static 'sistema/gameImages/femaleCharacter_right1.png' %}";
+			const imgFemaleCharacter_right2 = "{% static 'sistema/gameImages/femaleCharacter_right2.png' %}";
+			const imgFemaleCharacter_right3 = "{% static 'sistema/gameImages/femaleCharacter_right3.png' %}";			
+
 		    const imgMaleCharacter_front1 = "{% static 'sistema/gameImages/maleCharacter_front1.png' %}";
 		    const imgMaleCharacter_front2 = "{% static 'sistema/gameImages/maleCharacter_front2.png' %}";
 		    const imgMaleCharacter_front3 = "{% static 'sistema/gameImages/maleCharacter_front3.png' %}";

@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
-from .forms import RegistrationForm, UserInfosForm, EditProfileForm, UserChangeForm
+from .forms import RegistrationForm, UserInfosForm, EditProfileForm, UserChangeForm, CharacterInfosForm
 from django.contrib.auth import authenticate, login
+from .models import UserProfile
+from django.http import HttpResponse
+
 
 def home(request):
 	return render(request, 'sistema/home.html')
@@ -31,9 +34,31 @@ def ranking(request):
 	else:
 		return redirect('url_home')
 
-def play(request):
+def create_character(request):
+	if request.method == 'POST':
+		form = CharacterInfosForm(request.POST, instance=request.user)
+
+		if form.is_valid():
+			character = form.save()
+			character.userprofile.characterName = form.cleaned_data.get('characterName', None)
+			character.userprofile.characterGender = form.cleaned_data.get('characterGender', None)
+			character.userprofile.save()
+			return redirect('url_play')
+
 	if request.user.is_authenticated:
-		return render(request, 'sistema/play.html')
+		form = CharacterInfosForm()
+		return render(request, 'sistema/create_character.html', {'form': form})	
+	else:
+		return redirect('url_play')	
+
+def play(request):
+	if request.method == 'POST':
+		player = UserProfile.objects.get()
+		player.playerX = request.POST['playerPosX']
+		player.save()
+
+	if request.user.is_authenticated:
+		return render(request, 'sistema/play.html', {'user': request.user})
 	else:
 		return redirect('url_home')
 

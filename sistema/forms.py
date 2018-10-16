@@ -62,7 +62,24 @@ class UserInfosForm(forms.ModelForm):
         super(forms.ModelForm, self).__init__(*args, **kwargs)
 
         self.fields['birthdate'].widget.attrs['class'] = 'form-control'        
-        self.fields['birthdate'].label = 'Data de Nascimento'       
+        self.fields['birthdate'].label = 'Data de Nascimento'
+
+class CharacterInfosForm(forms.ModelForm):
+
+    class Meta:
+        model = UserProfile
+        fields = (
+            'characterName',
+            'characterGender'         
+        )
+
+    def __init__(self, *args, **kwargs):
+        super(forms.ModelForm, self).__init__(*args, **kwargs)
+
+        self.fields['characterName'].widget.attrs['class'] = 'form-control'        
+        self.fields['characterName'].label = 'Nome do personagem'
+        self.fields['characterGender'].widget.attrs['class'] = 'form-control'        
+        self.fields['characterGender'].label = 'Sexo do personagem'                 
 
 class EditProfileForm(UserChangeForm):
 
