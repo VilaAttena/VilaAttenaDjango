@@ -24,7 +24,6 @@ $(document).ready(function() {
 		if(puzzle.isOn) {
 			if(npc.array[player.searchNPC()].name == "Heloisa" && !puzzle.puzzlePong.intro && !puzzle.pause) {
 				puzzle.puzzlePong.movePlayer();
-				puzzle.puzzlePong.moveEnemy();
 				puzzle.puzzlePong.moveBall();
 				puzzle.puzzlePong.colide();
 			} else if(npc.array[player.searchNPC()].name == "Jorge" && !puzzle.puzzleFishing.intro && !puzzle.pause) {
@@ -172,7 +171,19 @@ $(document).ready(function() {
 		this.femaleCharacter_right2 = new Image();
 		this.femaleCharacter_right2.src = imgFemaleCharacter_right2;
 		this.femaleCharacter_right3 = new Image();
-		this.femaleCharacter_right3.src = imgFemaleCharacter_right3;		
+		this.femaleCharacter_right3.src = imgFemaleCharacter_right3;
+
+		//Imagens para os Puzzle
+		this.ball_puzzle = new Image();
+		this.ball_puzzle.src = imgBall_puzzle;
+		this.blue_puzzle_player_horizontal = new Image();
+		this.blue_puzzle_player_horizontal.src = imgBlue_puzzle_player_horizontal;
+		this.blue_puzzle_player_vertical = new Image();
+		this.blue_puzzle_player_vertical.src = imgBlue_puzzle_player_vertical;
+		this.red_puzzle_player_horizontal = new Image();
+		this.red_puzzle_player_horizontal.src = imgRed_puzzle_player_horizontal;
+		this.red_puzzle_player_vertical = new Image();
+		this.red_puzzle_player_vertical.src = imgRed_puzzle_player_vertical;				
 
 		//Imagens do personagem principal Masculíno
 		this.maleCharacter_front1 = new Image();
@@ -618,8 +629,8 @@ class Player {
 	constructor() {
 		this.name = characterName;
 		this.gender = characterGender;
-		this.x = 335;
-		this.y = 175;
+		this.x = 380;
+		this.y = 90;
 		this.width = 20;
 		this.height = 30;
 		this.level = 0;
@@ -1772,11 +1783,10 @@ class PuzzlePong {
 		this.playerHeight = 80;
 		this.playerX = 205;
 		this.playerY = canvas.height() / 2 - this.playerHeight / 2;
-		this.playerColor = "Black";
 		this.playerSpeed = 12;			
 		this.playerScore = 0;
 
-		this.ballSize = 30;
+		this.ballSize = 20;
 		this.ballX = canvas.width() / 2 - this.ballSize / 2;
 		this.ballY = canvas.height() / 2 - this.ballSize / 2;
 		this.ballColor = "Black";			
@@ -1784,11 +1794,10 @@ class PuzzlePong {
 		this.ballDirectionX = Math.floor(Math.random() * 2);
 		this.ballDirectionY = Math.floor(Math.random() * 2);
 
-		this.enemyWidth = 30;
-		this.enemyHeight = 30;
+		this.enemyWidth = 40;
+		this.enemyHeight = 500;
 		this.enemyX = 765;
-		this.enemyY = canvas.height() / 2 - this.playerHeight / 2;
-		this.enemyColor = "Black";
+		this.enemyY = 50;
 	}
 
 	movePlayer() {
@@ -1810,10 +1819,6 @@ class PuzzlePong {
 		} else {
 			this.ballY += this.ballSpeed;
 		}
-	}
-
-	moveEnemy() {
-		this.enemyY = this.ballY;
 	}
 
 	colide() {
@@ -1915,9 +1920,9 @@ draw() {
 		ctx.fillStyle = "Black";
 		ctx.font = "30px Cursive";
 		ctx.fillText("Pontos: " + this.playerScore, 250, this.y + 30);
-		DrawRect(this.playerColor, this.playerX, this.playerY, this.playerWidth, this.playerHeight);
-		DrawRect(this.ballColor, this.ballX, this.ballY, this.ballSize, this.ballSize);
-		DrawRect(this.enemyColor, this.enemyX, this.enemyY, this.enemyWidth, this.enemyHeight);
+		RenderImage(img.blue_puzzle_player_vertical,this.playerX, this.playerY, this.playerWidth, this.playerHeight);
+		RenderImage(img.ball_puzzle, this.ballX, this.ballY, this.ballSize, this.ballSize);
+		RenderImage(img.red_puzzle_player_vertical, this.enemyX, this.enemyY, this.enemyWidth, this.enemyHeight);
 	}
 }			
 }
@@ -2095,7 +2100,7 @@ exit() {
 }
 
 class PuzzleBreakout {
-	constructor(enemyColor, enemyX, enemyY, enemyWidth, enemyHeight) {
+	constructor(enemyX, enemyY, enemyWidth, enemyHeight) {
 		this.width = 800;
 		this.height = 500;
 		this.x = canvas.width() / 2 - this.width / 2;
@@ -2116,11 +2121,10 @@ class PuzzleBreakout {
 		this.enemyHeight = enemyHeight;
 		this.enemyX = enemyX;
 		this.enemyY = enemyY;
-		this.enemyColor = enemyColor;
 		this.enemies = [];	
 
-		this.ballWidth = 10;
-		this.ballHeight = 10;
+		this.ballWidth = 13;
+		this.ballHeight = 13;
 		this.ballX = canvas.width() / 2 - this.ballWidth / 2;
 		this.ballY = 350;
 		this.ballSpeedY = 5;
@@ -2187,12 +2191,11 @@ class PuzzleBreakout {
 			ctx.font = "25px Cursive";
 			ctx.fillStyle = "Red";
 			ctx.fillText("Pontos: " + this.playerScore, 110, 80);
-			DrawRect(this.playerColor, this.playerX, this.playerY, this.playerWidth, this.playerHeight);
-			DrawRect(this.ballColor, this.ballX, this.ballY, this.ballWidth, this.ballHeight);
+			RenderImage(img.blue_puzzle_player_horizontal, this.playerX, this.playerY, this.playerWidth, this.playerHeight);
+			RenderImage(img.ball_puzzle, this.ballX, this.ballY, this.ballWidth, this.ballHeight);
 			for(var i = 0; i < this.enemies.length; i++) {
 				this.currentEnemy = this.enemies[i];
-				ctx.fillStyle = this.currentEnemy.enemyColor;
-				ctx.fillRect(this.currentEnemy.enemyX, this.currentEnemy.enemyY, this.currentEnemy.enemyWidth, this.currentEnemy.enemyHeight);
+				RenderImage(img.red_puzzle_player_horizontal,this.currentEnemy.enemyX, this.currentEnemy.enemyY, this.currentEnemy.enemyWidth, this.currentEnemy.enemyHeight);
 			}
 		}
 	}
@@ -2274,13 +2277,13 @@ ballColideWalls() {
 addEnemies() {
 	for(var i = 0; i < 28; i++) {			
 		if(i <= 6) {
-			this.enemies.push(new PuzzleBreakout("Black", 100 * (i + 1) + 60, 100, 80, 30));
+			this.enemies.push(new PuzzleBreakout(100 * (i + 1) + 60, 100, 80, 30));
 		} else if(i > 6 && i <= 13) {
-			this.enemies.push(new PuzzleBreakout("Black", 100 * (i - 7 + 1) + 60, 140, 80, 30));
+			this.enemies.push(new PuzzleBreakout(100 * (i - 7 + 1) + 60, 140, 80, 30));
 		} else if(i > 13 && i <= 20) {
-			this.enemies.push(new PuzzleBreakout("Black", 100 * (i - 14 + 1) + 60, 180, 80, 30));
+			this.enemies.push(new PuzzleBreakout(100 * (i - 14 + 1) + 60, 180, 80, 30));
 		} else {
-			this.enemies.push(new PuzzleBreakout("Black", 100 * (i - 21 + 1) + 60, 220, 80, 30));
+			this.enemies.push(new PuzzleBreakout(100 * (i - 21 + 1) + 60, 220, 80, 30));
 		}
 	}
 }
@@ -2513,11 +2516,31 @@ draw() {
 			this.currentController = this.controllers[i];
 			ctx.fillStyle = this.currentController.playerColor;
 			ctx.fillRect(this.currentController.playerX, this.playerY, this.playerWidth, this.playerHeight);
+			if(this.currentController.playerColor == "Red") {
+				ctx.font = "40px Cursive";
+				ctx.fillStyle = "White";
+				ctx.fillText("Z", this.currentController.playerX + 10, this.currentController.playerY + 40);
+			} else if(this.currentController.playerColor == "Blue") {
+				ctx.font = "40px Cursive";
+				ctx.fillStyle = "White";
+				ctx.fillText("X", this.currentController.playerX + 10, this.currentController.playerY + 40);
+			} else if(this.currentController.playerColor == "Green") {
+				ctx.font = "40px Cursive";
+				ctx.fillStyle = "White";
+				ctx.fillText("C", this.currentController.playerX + 10, this.currentController.playerY + 40);
+			} else if(this.currentController.playerColor == "Purple") {
+				ctx.font = "40px Cursive";
+				ctx.fillStyle = "White";
+				ctx.fillText("V", this.currentController.playerX + 10, this.currentController.playerY + 40);
+			}
 		}
 		for(var j = 0; j < this.tilesArray.length; j++) {
 			this.currentTile = this.tilesArray[j];
 			ctx.fillStyle = this.currentTile.tileColor;
 			ctx.fillRect(this.currentTile.tileX, this.currentTile.tileY, this.tileWidth, this.tileHeight);
+			ctx.font = "40px Cursive";
+			ctx.fillStyle = "White";
+			ctx.fillText("♫", this.currentTile.tileX + 10, this.currentTile.tileY + 40);
 		}				
 	}
 }
