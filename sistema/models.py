@@ -6,7 +6,8 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     birthdate = models.DateField(null=True, blank=False)
     characterName = models.CharField(max_length=10, null=True)
-    characterGender = models.CharField(max_length=9, null=True)
+    GENDER = (('Masculino', 'Masculino'), ('Feminino', 'Feminino'))
+    characterGender = models.CharField(choices=GENDER, max_length=9, null=True, blank=False, default='')
     playerX = models.IntegerField(null=True)
     playerY = models.IntegerField(null=True)
 

@@ -46,10 +46,14 @@ def create_character(request):
 			return redirect('url_play')
 
 	if request.user.is_authenticated:
-		form = CharacterInfosForm()
-		return render(request, 'sistema/create_character.html', {'form': form})	
+		user = request.user
+		if user.userprofile.characterName is None or user.userprofile.characterGender is None:
+			form = CharacterInfosForm()
+			return render(request, 'sistema/create_character.html', {'form': form})
+		else:
+			return redirect('url_play')
 	else:
-		return redirect('url_play')	
+		return redirect('url_home')	
 
 def play(request):
 	if request.method == 'POST':
@@ -86,4 +90,3 @@ def register(request):
 
 def forgetPassword(request):	
 	return render(request, 'sistema/forget.html')
-

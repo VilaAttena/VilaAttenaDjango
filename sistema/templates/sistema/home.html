@@ -5,8 +5,7 @@
   {% include 'head.html' %}
 </head>
 <body>
-  <div class="container text-center py-5">  	
-    <p class="logo">Vila Attena</p>
+  <div class="container text-center py-5>
     <div class="btn-group-vertical">
     	{% if not user.is_authenticated %}
 		    <a href="{% url 'login' %}" class="btn btn-primary">Entrar</a>

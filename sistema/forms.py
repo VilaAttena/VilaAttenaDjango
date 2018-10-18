@@ -61,7 +61,8 @@ class UserInfosForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(forms.ModelForm, self).__init__(*args, **kwargs)
 
-        self.fields['birthdate'].widget.attrs['class'] = 'form-control'        
+        self.fields['birthdate'].widget.attrs['class'] = 'form-control'
+        self.fields['birthdate'].widget.attrs['max'] = '9999-12-31'        
         self.fields['birthdate'].label = 'Data de Nascimento'
 
 class CharacterInfosForm(forms.ModelForm):
