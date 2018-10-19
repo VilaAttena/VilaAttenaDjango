@@ -1,13 +1,10 @@
 $(document).ready(function() {
+	alert("Converse e jogue com os personagens marcados com um quadrado vermelho :D");
 	const canvas = $("#canvas");
 	const ctx = canvas[0].getContext("2d");
 
 	function Init() {
 		Loop();
-	}
-
-	function saveGame() {
-		
 	}
 
 	function Update() {
