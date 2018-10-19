@@ -3,3 +3,5 @@ freeze==1.0.10
 pytz==2018.5
 six==1.11.0
 whitenoise==4.1
+gunicorn==19.9.0
+django-heroku==0.3.1
