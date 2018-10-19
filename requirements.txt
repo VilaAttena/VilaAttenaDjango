@@ -2,3 +2,4 @@ Django==2.0.7
 freeze==1.0.10
 pytz==2018.5
 six==1.11.0
+whitenoise==4.1
