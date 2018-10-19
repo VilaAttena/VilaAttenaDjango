@@ -7,13 +7,14 @@
 }
 
 body {
-  background: #F0FFF0;
   font-family: pixel;
   margin: 0;
   font-weight: 400;
+  height: 100vh;
+  width: 100vw;                                       
   background-image: url('../images/cidade.png');
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-repeat: no-repeat; 
 }
 
 a:hover, a:focus {
