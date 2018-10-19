@@ -4,7 +4,7 @@ verify_ssl = true
 
 [packages]
 dj-database-url = "*"
-django = "*"
+django = "2.0.7"
 gunicorn = "*"
 psycopg2 = "*"
 whitenoise = "*"
