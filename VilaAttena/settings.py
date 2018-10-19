@@ -24,7 +24,7 @@ SECRET_KEY = '^4#$a#+gy*@!vqfv!3ul3f4)g(pv9$$x4t9%2jd@fvg_y4c6t)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['*']
 
 DATE_INPUT_FORMATS = ['%d-%m-%Y']
 
