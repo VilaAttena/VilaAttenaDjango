@@ -633,7 +633,7 @@ class Player {
 		this.actualXp = 0;
 		this.xpCalc = 0;
 		this.storageXp = 0;
-		this.speed = 15;
+		this.speed = 8;
 		this.moveLeft = this.moveUp = this.moveRight = this.moveDown = false;					
 		this.talking = false;
 		this.animateCount = 1;
