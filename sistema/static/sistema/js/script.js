@@ -950,7 +950,7 @@ class Profile {
 
 			this.array.push(new NPC(
 				"Bruno", 
-				"Bom dia " + player.name + "? Quer praticar um pouco de violão?",
+				"Bom dia " + player.name + "? Quer praticar um pouco de guitarra?",
 				img.brunoBody,
 				240, 
 				200, 
@@ -2341,7 +2341,7 @@ class PuzzleGuitarHero {
 		this.tilesArray = [];
 		this.tileSpeed = 5;
 		this.tilesQuantity = 50;
-		this.spawnSpeed = 400;		
+		this.spawnSpeed = 300;		
 
 		this.controllers = [];
 		this.controlRed = this.controlBlue = this.controlGreen = this.controlPurple = false;
@@ -2365,10 +2365,10 @@ class PuzzleGuitarHero {
 				if(this.currentTile.tileY + this.tileHeight >= this.playerY &&
 					this.currentTile.tileY <= this.playerY + this.playerHeight) {
 
-					if(this.currentController.playerColor == "Red" && 
-						puzzle.controlRed &&
-						this.currentTile.tileColor == "Red") {
-						this.playerScore += 5;
+				if(this.currentController.playerColor == "Red" && 
+					puzzle.controlRed &&
+					this.currentTile.tileColor == "Red") {
+					this.playerScore += 5;
 					this.tilesArray.splice(this.tilesArray.indexOf(this.currentTile), 1);						
 				} else if(this.currentController.playerColor == "Blue" && 
 					puzzle.controlBlue &&
@@ -2386,6 +2386,32 @@ class PuzzleGuitarHero {
 					this.playerScore += 5;
 					this.tilesArray.splice(this.tilesArray.indexOf(this.currentTile), 1);
 				}
+			} else {
+				if(this.currentController.playerColor == "Red" && 
+					puzzle.controlRed &&
+					this.currentTile.tileColor == "Red") {
+					if(this.playerScore > 0) {
+						this.playerScore -= 1;					
+					}
+				} else if(this.currentController.playerColor == "Blue" && 
+					puzzle.controlBlue &&
+					this.currentTile.tileColor == "Blue") {
+					if(this.playerScore > 0) {
+						this.playerScore -= 1;					
+					}
+				} else if(this.currentController.playerColor == "Green" && 
+					puzzle.controlGreen &&
+					this.currentTile.tileColor == "Green") {
+					if(this.playerScore > 0) {
+						this.playerScore -= 1;					
+					}
+				} else if(this.currentController.playerColor == "Purple" && 
+					puzzle.controlPurple &&
+					this.currentTile.tileColor == "Purple") {
+					if(this.playerScore > 0) {
+						this.playerScore -= 1;					
+					}
+				}				
 			}
 		}			
 	}
@@ -2452,7 +2478,7 @@ exit() {
 	}
 	puzzle.isOn = false;
 	npc.array[4].message = "Valeu, " + player.name + "! Quer praticar mais um pouco?";
-	player.levelUp(Math.floor(this.playerScore / 2));
+	player.levelUp(Math.floor(this.playerScore / 3));
 	puzzle.puzzleGuitarHero = new PuzzleGuitarHero();
 	saveGame();			
 }		
@@ -2463,7 +2489,7 @@ draw() {
 		ctx.fillStyle = "Red";
 		ctx.font = "50px Cursive";
 		ctx.textAlign = "center";
-		ctx.fillText("Praticando violão!", canvas.width() / 2, 100);
+		ctx.fillText("Praticando guitarra!", canvas.width() / 2, 100);
 		ctx.fillStyle = "Black";
 		ctx.font = "30px Cursive";
 		ctx.fillText("Evite com que os blocos alcancem a margem inferior,", canvas.width() / 2, 170);
@@ -2502,7 +2528,7 @@ draw() {
 			ctx.font = "30px Cursive";
 			ctx.fillStyle = "Green";
 			ctx.fillText("Seu novo recorde: " + Math.floor(this.playerScore), 360, 300);
-			ctx.fillText("Você recebeu " + Math.floor(this.playerScore / 2) + " pontos de experiência", 480, 340);
+			ctx.fillText("Você recebeu " + Math.floor(this.playerScore / 3) + " pontos de experiência", 480, 340);
 		} else {
 			ctx.fillStyle = "Red";
 			ctx.fillText("Pontuação final: " + Math.floor(this.playerScore), canvas.width() / 2, 100);
@@ -2510,7 +2536,7 @@ draw() {
 			ctx.font = "30px Cursive";
 			ctx.fillText("Seu recorde atual é: " + Math.floor(puzzle.highestScoreGuitarHero), 370, 200);
 			ctx.fillStyle = "Green";
-			ctx.fillText("Você recebeu " + Math.floor(this.playerScore / 2) + " pontos de experiência", 470, 240);					
+			ctx.fillText("Você recebeu " + Math.floor(this.playerScore / 3) + " pontos de experiência", 470, 240);					
 		}
 	} else {
 		ctx.font = "30px Cursive";

@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import RegistrationForm, UserInfosForm, EditProfileForm, UserChangeForm, CharacterInfosForm
 from django.contrib.auth import authenticate, login
 from .models import UserProfile
+from .models import User
 from django.http import HttpResponse
 
 
@@ -28,11 +29,61 @@ def edit_profile(request):
 	else:
 		return redirect('url_home')
 
-def ranking(request):
+def rankingLevel(request):
+	player = UserProfile.objects.all().order_by('-level')
+
 	if request.user.is_authenticated:
-		return render(request, 'sistema/ranking.html')
+		return render(request, 'sistema/rankingLevel.html', {'players': player})
 	else:
 		return redirect('url_home')
+
+def rankingPong(request):
+	player = UserProfile.objects.all().order_by('-highestScorePong')
+
+	if request.user.is_authenticated:
+		return render(request, 'sistema/rankingPong.html', {'players': player})
+	else:
+		return redirect('url_home')
+
+def rankingFishing(request):
+	player = UserProfile.objects.all().order_by('-highestScoreFishing')
+
+	if request.user.is_authenticated:
+		return render(request, 'sistema/rankingFishing.html', {'players': player})
+	else:
+		return redirect('url_home')
+
+def rankingBreakout(request):
+	player = UserProfile.objects.all().order_by('-highestScoreBreakout')
+
+	if request.user.is_authenticated:
+		return render(request, 'sistema/rankingBreakout.html', {'players': player})
+	else:
+		return redirect('url_home')
+
+def rankingFlappyBird(request):
+	player = UserProfile.objects.all().order_by('-highestScoreFlappyBird')
+
+	if request.user.is_authenticated:
+		return render(request, 'sistema/rankingFlappyBird.html', {'players': player})
+	else:
+		return redirect('url_home')
+
+def rankingGuitarHero(request):
+	player = UserProfile.objects.all().order_by('-highestScoreGuitarHero')
+
+	if request.user.is_authenticated:
+		return render(request, 'sistema/rankingGuitarHero.html', {'players': player})
+	else:
+		return redirect('url_home')
+
+def rankingMaze(request):
+	player = UserProfile.objects.all().order_by('-highestScoreMaze')
+
+	if request.user.is_authenticated:
+		return render(request, 'sistema/rankingMaze.html', {'players': player})
+	else:
+		return redirect('url_home')											
 
 def create_character(request):
 	if request.method == 'POST':
