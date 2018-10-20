@@ -14,15 +14,15 @@ $(document).ready(function() {
 	    method: "POST",
 	    dataType: "JSON",
 	    data: {playerX: player.x,
-	    			 playerY: player.y, 
-	    			 level: player.level, 
-	    			 actualXp: player.actualXp, 
-	    			 highestScoreFishing: puzzle.highestScoreFishing,
-	    			 highestScorePong: puzzle.highestScorePong,
-	    			 highestScoreBreakout: puzzle.highestScoreBreakout,
-	    			 highestScoreFlappyBird: puzzle.highestScoreFlappyBird,
-	    			 highestScoreGuitarHero: puzzle.highestScoreGuitarHero,
-	    			 highestScoreMaze: puzzle.highestScoreMaze}
+			playerY: player.y, 
+			level: player.level, 
+			actualXp: player.actualXp, 
+			highestScoreFishing: puzzle.highestScoreFishing,
+			highestScorePong: puzzle.highestScorePong,
+			highestScoreBreakout: puzzle.highestScoreBreakout,
+			highestScoreFlappyBird: puzzle.highestScoreFlappyBird,
+			highestScoreGuitarHero: puzzle.highestScoreGuitarHero,
+			highestScoreMaze: puzzle.highestScoreMaze}
 		});		
 	}
 
@@ -429,7 +429,6 @@ $(document).ready(function() {
 				puzzle.puzzleMaze.time();				}
 				if(!player.profile.isOn && !npc.dialogue.isOn && !puzzle.isOn) {
 					player.profile.isOn = true;
-					saveGame();
 					break;
 				} else {
 					player.profile.isOn = false;
@@ -1698,6 +1697,7 @@ class Profile {
 		npc.array[4].message = "Obrigado, " + player.name + "! Pegamos muitos peixes hoje. Vamos continuar?";
 		player.levelUp(Math.floor(this.playerScore / 10));
 		puzzle.isOn = false;
+		saveGame();
 	}  				
 
 	draw() {
@@ -1870,6 +1870,7 @@ exit() {
 	npc.array[0].message = "Valeu, " + player.name + "! Foi muito divertido. Quer jogar de novo?";
 	player.levelUp(Math.floor(this.playerScore / 2));
 	puzzle.puzzlePong = new PuzzlePong();
+	saveGame();
 }
 
 draw() {
@@ -2105,6 +2106,7 @@ exit() {
 	puzzle.isOn = false;
 	npc.array[1].message = "Valeu, " + player.name + "! Foi muito divertido.";
 	player.levelUp(Math.floor(this.playerScore / 3));
+	saveGame();
 }
 }
 
@@ -2310,6 +2312,7 @@ exit() {
 	npc.array[1].message = "Valeu, " + player.name + "! Foi muito divertido.";
 	player.levelUp(Math.floor(this.playerScore / 3));
 	puzzle.puzzleBreakout = new PuzzleBreakout();
+	saveGame();
 }		
 }
 
@@ -2450,7 +2453,8 @@ exit() {
 	puzzle.isOn = false;
 	npc.array[4].message = "Valeu, " + player.name + "! Quer praticar mais um pouco?";
 	player.levelUp(Math.floor(this.playerScore / 2));
-	puzzle.puzzleGuitarHero = new PuzzleGuitarHero();				
+	puzzle.puzzleGuitarHero = new PuzzleGuitarHero();
+	saveGame();			
 }		
 
 draw() {
@@ -2674,7 +2678,8 @@ class PuzzleMaze {
 		puzzle.isOn = false;
 		npc.array[5].message = "Valeu, " + player.name + "! Vamos jogar de novo?";
 		player.levelUp(Math.floor(this.playerScore / 15));
-		puzzle.puzzleMaze = new PuzzleMaze();				
+		puzzle.puzzleMaze = new PuzzleMaze();
+		saveGame();			
 	}		
 
 	draw() {			
