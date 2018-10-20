@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	alert("Converse e jogue com os personagens marcados com um quadrado vermelho :D");
+	alert("Converse e jogue com os personagens marcados com um quadrado vermelho. Pressione ENTER para ver seu perfil ;)");
 	const canvas = $("#canvas");
 	const ctx = canvas[0].getContext("2d");
 
@@ -410,7 +410,6 @@ $(document).ready(function() {
 				puzzle.puzzleMaze.time();				}
 				if(!player.profile.isOn && !npc.dialogue.isOn && !puzzle.isOn) {
 					player.profile.isOn = true;
-					alert(player.x + " " + player.y);
 					saveGame();
 					break;
 				} else {
