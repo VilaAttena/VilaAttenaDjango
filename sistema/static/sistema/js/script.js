@@ -7,6 +7,25 @@ $(document).ready(function() {
 		Loop();
 	}
 
+	function saveGame() {
+		$.ajax({
+	    url: "/play/",
+	    headers: {'X-CSRFToken': generated_csrf_token},
+	    method: "POST",
+	    dataType: "JSON",
+	    data: {playerX: player.x,
+	    			 playerY: player.y, 
+	    			 level: player.level, 
+	    			 actualXp: player.actualXp, 
+	    			 highestScoreFishing: puzzle.highestScoreFishing,
+	    			 highestScorePong: puzzle.highestScorePong,
+	    			 highestScoreBreakout: puzzle.highestScoreBreakout,
+	    			 highestScoreFlappyBird: puzzle.highestScoreFlappyBird,
+	    			 highestScoreGuitarHero: puzzle.highestScoreGuitarHero,
+	    			 highestScoreMaze: puzzle.highestScoreMaze}
+		});		
+	}
+
 	function Update() {
 		if(!player.profile.isOn && !npc.dialogue.isOn && !puzzle.isOn) {
 			player.searchNPC();
@@ -521,7 +540,7 @@ $(document).ready(function() {
 			}
 			if(puzzle.puzzlePong.outro) {
 				puzzle.puzzlePong.exit();
-				puzzle.puzzlePong.outro = false;
+				puzzle.puzzlePong.outro = false;			
 			} 
 			if(puzzle.puzzleFishing.outro) {
 				puzzle.puzzleFishing.gameOver();
@@ -625,12 +644,12 @@ class Player {
 	constructor() {
 		this.name = characterName;
 		this.gender = characterGender;
-		this.x = 1485;
-		this.y = 280;
+		this.x = playerX;
+		this.y = playerY;
 		this.width = 20;
 		this.height = 30;
-		this.level = 0;
-		this.actualXp = 0;
+		this.level = level;
+		this.actualXp = actualXp;
 		this.xpCalc = 0;
 		this.storageXp = 0;
 		this.speed = 8;
@@ -1536,7 +1555,12 @@ class Profile {
 			this.playerMoveLeft = this.playerMoveUp = this.playerMoveDown = this.playerMoveRight = this.upIsDown = false;
 			this.controlRed = this.controlBlue = this.controlGreen = this.controlPurple = false;
 			this.zIsDown = this.xIsDown = this.cIsDown = this.vIsDown = false;
-			this.highestScorePong = this.highestScoreFishing = this.highestScoreFlappyBird = this.highestScoreBreakout = this.highestScoreGuitarHero = this.highestScoreMaze = 0;			
+			this.highestScorePong = highestScorePong;
+			this.highestScoreFishing = highestScoreFishing;
+			this.highestScoreFlappyBird = highestScoreFlappyBird;
+			this.highestScoreBreakout = highestScoreBreakout;
+			this.highestScoreGuitarHero = highestScoreGuitarHero;
+			this.highestScoreMaze = highestScoreMaze;			
 		}
 	}
 
@@ -1841,7 +1865,7 @@ gameOver() {
 exit() {
 	if(this.playerScore > puzzle.highestScorePong) {
 		puzzle.highestScorePong = this.playerScore;
-	}				
+	}	
 	puzzle.isOn = false;			
 	npc.array[0].message = "Valeu, " + player.name + "! Foi muito divertido. Quer jogar de novo?";
 	player.levelUp(Math.floor(this.playerScore / 2));

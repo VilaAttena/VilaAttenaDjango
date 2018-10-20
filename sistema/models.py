@@ -10,6 +10,14 @@ class UserProfile(models.Model):
     characterGender = models.CharField(choices=GENDER, max_length=9, null=True, blank=False, default='')
     playerX = models.IntegerField(null=True)
     playerY = models.IntegerField(null=True)
+    level = models.IntegerField(null=True)
+    actualXp = models.IntegerField(null=True)
+    highestScoreFishing = models.IntegerField(null=True)
+    highestScorePong = models.IntegerField(null=True)
+    highestScoreFlappyBird = models.IntegerField(null=True)
+    highestScoreBreakout = models.IntegerField(null=True)
+    highestScoreGuitarHero = models.IntegerField(null=True)
+    highestScoreMaze = models.IntegerField(null=True)
 
     def __str__(self):
         return self.user.username

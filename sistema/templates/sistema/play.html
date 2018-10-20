@@ -11,8 +11,19 @@
 	<canvas id="canvas" height="600" width="1000">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script>
+			const generated_csrf_token = "{{ csrf_token }}";
 			const characterName = "{{ user.userprofile.characterName }}";
 			const characterGender = "{{ user.userprofile.characterGender }}";
+			const level = {{ user.userprofile.level }};
+			const actualXp = {{ user.userprofile.actualXp }};
+			const playerX = {{ user.userprofile.playerX }};
+			const playerY = {{ user.userprofile.playerY }};
+			const highestScoreFishing = {{ user.userprofile.highestScoreFishing }};
+			const highestScorePong = {{ user.userprofile.highestScorePong }};
+			const highestScoreFlappyBird = {{ user.userprofile.highestScoreFlappyBird }};
+			const highestScoreBreakout = {{ user.userprofile.highestScoreBreakout }};
+			const highestScoreGuitarHero = {{ user.userprofile.highestScoreGuitarHero }};
+			const highestScoreMaze = {{ user.userprofile.highestScoreMaze }};
 
 		    const imgFemaleCharacter_front1 = "{% static 'sistema/gameImages/femaleCharacter_front1.png' %}";
 		    const imgFemaleCharacter_front2 = "{% static 'sistema/gameImages/femaleCharacter_front2.png' %}";

@@ -42,6 +42,16 @@ def create_character(request):
 			character = form.save()
 			character.userprofile.characterName = form.cleaned_data.get('characterName', None)
 			character.userprofile.characterGender = form.cleaned_data.get('characterGender', None)
+			character.userprofile.playerX = 1628
+			character.userprofile.playerY = 250
+			character.userprofile.level = 0
+			character.userprofile.actualXp = 0
+			character.userprofile.highestScoreFishing = 0
+			character.userprofile.highestScorePong = 0
+			character.userprofile.highestScoreFlappyBird = 0
+			character.userprofile.highestScoreBreakout = 0
+			character.userprofile.highestScoreGuitarHero = 0
+			character.userprofile.highestScoreMaze = 0
 			character.userprofile.save()
 			return redirect('url_play')
 
@@ -57,9 +67,18 @@ def create_character(request):
 
 def play(request):
 	if request.method == 'POST':
-		player = UserProfile.objects.get()
-		player.playerX = request.POST['playerPosX']
-		player.save()
+		user = request.user
+		user.userprofile.playerX = request.POST['playerX']
+		user.userprofile.playerY = request.POST['playerY']
+		user.userprofile.level = request.POST['level']
+		user.userprofile.actualXp = request.POST['actualXp']
+		user.userprofile.highestScoreFishing = request.POST['highestScoreFishing']
+		user.userprofile.highestScorePong = request.POST['highestScorePong']
+		user.userprofile.highestScoreFlappyBird = request.POST['highestScoreFlappyBird']
+		user.userprofile.highestScoreBreakout = request.POST['highestScoreBreakout']
+		user.userprofile.highestScoreGuitarHero = request.POST['highestScoreGuitarHero']
+		user.userprofile.highestScoreMaze = request.POST['highestScoreMaze']
+		user.userprofile.save()
 
 	if request.user.is_authenticated:
 		return render(request, 'sistema/play.html', {'user': request.user})
