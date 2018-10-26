@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -77,12 +78,8 @@ WSGI_APPLICATION = 'VilaAttena.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'vilaattena',
-        'USER': 'postgres',
-        'PASSWORD': 'gammaray',
-        'HOST': 'localhost',
-        'PORT': '5433'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -139,3 +136,5 @@ EMAIL_HOST_USER = 'vilaattena@gmail.com'
 EMAIL_HOST_PASSWORD = 'estudantesenai'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = 1
+
+django_heroku.settings(locals())
