@@ -77,11 +77,11 @@ WSGI_APPLICATION = 'VilaAttena.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'vilaattena',
         'USER': 'postgres',
         'PASSWORD': 'gammaray',
-        'HOST': '127.0.0.1',
+        'HOST': 'localhost',
         'PORT': '5433'
     }
 }
